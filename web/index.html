@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Link Post</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    .content {
+      margin-top: 20px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    video {
+      width: 100%;
+      height: auto;
+      controls: true;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Web Post Viewer</h1>
+  <div id="content" class="content">
+    <p>Loading content...</p>
+  </div>
+
+  <script>
+    // Function to get query parameter by name
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // Function to load content based on postId
+    function loadContent() {
+      const postId = getQueryParam('postId');
+      const contentDiv = document.getElementById('content');
+
+      if (!postId) {
+        contentDiv.innerHTML = '<p>No post found.</p>';
+        return;
+      }
+
+      // Handle the content based on postId
+      switch (postId) {
+        case 'text':
+          contentDiv.innerHTML = `
+            <h2>Text Post</h2>
+            <p>Excited to share my latest project! After hours of hard work, I’ve finally brought my vision to life. This project challenged me in new ways, pushing my skills further than ever before. I am proud of the outcome and eager to hear your thoughts. Check it out and let me know what you think!</p>
+          `;
+          break;
+        case 'image':
+          contentDiv.innerHTML = `
+            <h2>Image Post</h2>
+            <img src="https://nikonrumors.com/wp-content/uploads/2014/03/Nikon-1-V3-sample-photo.jpg" alt="Sample Image Post">
+          `;
+          break;
+        case 'video':
+          contentDiv.innerHTML = `
+            <h2>Video Post</h2>
+            <video controls>
+              <source src="https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          `;
+          break;
+        default:
+          contentDiv.innerHTML = '<p>Unknown post type.</p>';
+      }
+    }
+
+    // Load content when the page is ready
+    window.onload = loadContent;
+  </script>
+
+</body>
+</html>
+

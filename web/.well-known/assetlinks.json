@@ -1,0 +1,13 @@
+[
+    {
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.example.three_post",
+        "sha256_cert_fingerprints": [
+          "B6:A0:55:1F:F9:6B:0B:ED:FC:CC:33:54:13:95:EC:8C:A9:F2:3C:05:17:71:7D:19:94:14:C2:F9:D9:FB:06:C6"
+        ]
+      }
+    }
+  ]
+  
